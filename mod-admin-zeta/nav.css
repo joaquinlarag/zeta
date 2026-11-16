@@ -1,0 +1,151 @@
+* {
+font-family: 'Open Sans', sans-serif;
+list-style:none;
+text-decoration:none;
+margin:0;
+padding:0;
+}
+.nav {
+	width:1040px;
+	height: 65px;
+	display: block;
+	background:#fff;
+	position: relative;
+	z-index: 100;
+}
+
+.nav > li {
+float:left;
+list-style:none;
+}
+.nav li a.tipo {
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 400;
+	color: #333;
+	font-size: 10px;
+	margin: 0px 10px 0px 15px;
+	padding-top: 10px;
+	height: 25px;
+	display:block;
+	list-style:none;
+}
+ 
+.nav li a.tipo:hover {
+	background: url(img/btn.png) bottom no-repeat;
+	color: #1c9d48;
+	padding-top: 10px;
+	height: 25px;
+}
+.nav li a.tipo_on {
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 400;
+	font-size: 17px;
+	margin: 0px 20px 0px 15px;
+	padding-top: 10px;
+	height: 20px;
+	display:block;
+	list-style:none;
+	background: url(img/btn.png) bottom no-repeat;
+	color: #cda502;
+}
+
+.nav li ul {
+display:none;
+position:absolute;
+*position:inherit;
+min-width:140px;
+*min-width:100px;
+list-style:none;
+}
+
+.nav li:hover > ul {
+display:block;
+}
+.nav li ul li {
+position:relative;
+list-style:none;
+}
+.nav li ul li a.tipo2{
+	padding-top: 5px;
+	padding-bottom: 15px;
+	background: #555;
+	height: 15px;
+	width: 110px;
+	display:block;
+	list-style:none;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 10px;
+	color: #FFFFFF;
+	margin: 0px 38px 0px 10px;
+	display:block;
+	list-style:none;
+	z-index: 100;
+	text-align: center;
+}
+.nav li ul li a.tipo2:hover {
+text-decoration:underline;
+}
+.nav li ul li a.tipo2_on {
+	padding-top: 5px;
+	padding-bottom: 5px;
+	background:#fff;
+	height: 23px;
+	width: 70px;
+	display:block;
+	list-style:none;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 400;
+	font-size: 17px;
+	color: #cda502;
+	margin: 0px 38px 0px 10px;
+	display:block;
+	list-style:none;
+	z-index: 100;
+}
+
+
+/*.nav li ul li a.ocho{
+background:url(img/imagenes.png) #fff;
+width: 100px;
+height: 33px;
+display:block;
+list-style:none;
+z-index: 100;
+}
+.nav li ul li a.ocho:hover {
+background:url(img/imagenes_on.png) #fff;
+}
+.nav li ul li a.ocho_on {
+background:url(img/imagenes_on.png) #fff;
+width: 100px;
+height: 33px;
+display:block;
+list-style:none;
+z-index: 100;
+}
+.nav li ul li a.nueve{
+background:url(img/videos.png) #fff;
+width: 100px;
+height: 33px;
+display:block;
+list-style:none;
+margin-top: -5px;
+z-index: 100;
+}
+.nav li ul li a.nueve:hover {
+background:url(img/videos_on.png) #fff;
+}
+.nav li ul li a.nueve_on {
+background:url(img/videos_on.png) #fff;
+width: 100px;
+height: 33px;
+display:block;
+list-style:none;
+margin-top: -5px;
+z-index: 100;
+}*/
+.nav li ul li ul {
+right:-140px;
+top:0;
+list-style:none;
+}

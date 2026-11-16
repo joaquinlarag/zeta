@@ -1,0 +1,25 @@
+
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^blacarq\.cl$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.blacarq\.cl$
+RewriteRule ^/?$ "http\:\/\/zetaarquitectos\.cl" [R=301,L]
+RewriteCond %{HTTP_HOST} ^blacarquitectos\.cl$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.blacarquitectos\.cl$
+RewriteRule ^/?$ "http\:\/\/zetaarquitectos\.cl" [R=301,L]
+RewriteCond %{HTTP_HOST} ^zarquitectos\.cl$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.zarquitectos\.cl$
+RewriteRule ^/?$ "http\:\/\/zetaarquitectos\.cl" [R=301,L]
+RewriteCond %{HTTP_HOST} ^zarquitectura\.cl$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.zarquitectura\.cl$
+RewriteRule ^/?$ "http\:\/\/zetaarquitectos\.cl" [R=301,L]
+
+RewriteEngine On
+RewriteCond %{HTTPS} !on
+RewriteCond %{HTTP_HOST} !^localhost(:[0-9]+)?$ [NC]
+RewriteCond %{HTTP_HOST} !^127\.0\.0\.1(:[0-9]+)?$ [NC]
+RewriteCond %{REQUEST_URI} !^/[0-9]+\..+\.cpaneldcv$
+RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+RewriteCond %{HTTP_HOST} ^danielbuzeta\.cl$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.danielbuzeta\.cl$
+RewriteRule ^/?$ "http\:\/\/www\.zetaarquitectos\.cl" [R=301,L]

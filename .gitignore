@@ -1,0 +1,31 @@
+# macOS
+.DS_Store
+
+# Registros
+error_log
+*.log
+
+# Fotos de obras y galerías
+uploads/
+imagenes/nosotros/
+imagenes/*.jpg
+imagenes/*.jpeg
+imagenes/*.png
+imagenes/*.gif
+imagenes/*.webp
+imagenes/*.jfif
+imagenes/*.JPG
+imagenes/*.JPEG
+imagenes/*.PNG
+movil/imagenes/*.jpg
+movil/imagenes/*.jpeg
+movil/imagenes/*.png
+movil/imagenes/*.JPG
+movil/imagenes/*.JPEG
+movil/imagenes/*.PNG
+
+# Base de datos y contraseñas
+BD/*.sql
+conexion/conexion.php
+conexion/config.php
+conexion/conexion-movil.php

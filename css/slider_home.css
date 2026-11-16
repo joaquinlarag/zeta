@@ -1,0 +1,12 @@
+@charset "utf-8";
+/* CSS Document */
+.theme-default #slider {
+	margin:0px auto 0 auto;
+	width:688px; /* Make sure your images are the same size */
+	height:353px; /* Make sure your images are the same size */
+}
+.theme-pascal.slider-wrapper,
+.theme-orman.slider-wrapper {
+    margin-top:150px;
+}
+
