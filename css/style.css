@@ -3942,3 +3942,22 @@ input[type=submit]
 .sitio-contacto a:hover{
 	color:#444;
 }
+
+.nav-obras{
+	float: left;
+	display: block;
+	width: 280px;
+	margin: 8px 0 0 38px;
+}
+.nav-obras a{
+	display: block;
+	font-family: 'Roboto', sans-serif;
+	font-size: 12px;
+	line-height: 18px;
+	color: #666767;
+	text-decoration: none;
+	padding: 3px 0;
+}
+.nav-obras a:hover{
+	color: #b68d64;
+}

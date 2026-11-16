@@ -122,11 +122,23 @@ if((isset($_REQUEST['imagen'])) && ($_REQUEST['imagen_si'] == 1)){
 // INGRESAR A LA BASE DE DATOS
 
 include_once("conexion/conexion.php");
+include_once("../conexion/sitio.php");
 
 $sql = "UPDATE propiedades Set nombre='$nombre', tipo='$estado', arquitecto='$arquitecto', colaboradores='$colaboradores', iluminacion='$iluminacion', ubicacion='$ubicacion', ano_proyecto='$ano_proyecto', ano_construccion='$ano_construccion', superficie_construida='$superficie_construida', ing_estructural='$ing_estructural', construccion='$construccion', materialidad='$materialidad', fotografia='$fotografia', descripcion='$descripcion', imagen='$imagen' WHERE id=$id";
 mysqli_set_charset($conn,"utf8");
 if ($conn->query($sql) === TRUE) {
     $mensaje = "El producto se modificó correctamente";
+    zeta_asegurar_slug($conn);
+    $idObra = (int) $id;
+    $slugActual = $conn->query("SELECT slug FROM propiedades WHERE id=$idObra");
+    $filaSlug = $slugActual ? $slugActual->fetch_assoc() : null;
+    if ($filaSlug && ($filaSlug['slug'] === null || $filaSlug['slug'] === '')) {
+        $slugNuevo = zeta_slug_libre($conn, zeta_slug($nombre), $idObra);
+        $stmtSlug = $conn->prepare('UPDATE propiedades SET slug = ? WHERE id = ?');
+        $stmtSlug->bind_param('si', $slugNuevo, $idObra);
+        $stmtSlug->execute();
+        $stmtSlug->close();
+    }
 } else {
     $mensaje = "Error en la carga del producto, por favor intente más tarde";
     echo "Error: " . $sql . "<br>" . $conn->error;

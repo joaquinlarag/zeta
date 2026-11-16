@@ -12,7 +12,7 @@
     <ul>
       <li><a href="index.php">Proyectos</a></li>
       <li><a href="equipo.php">Equipo</a></li>
-      <li><a href="vision.php">Visi®Æn</a></li>
+      <li><a href="vision.php">Visi√≥n</a></li>
     </ul>
   </div>
 

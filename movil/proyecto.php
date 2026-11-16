@@ -1,5 +1,6 @@
 <?php
 require_once '../conexion/conexion.php';
+require_once '../conexion/sitio.php';
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -105,14 +106,11 @@ require_once '../conexion/conexion.php';
                 <div class="container">
 
                   <?php
-                    $id=$_GET['id'];
-                    $sql = "SELECT * FROM propiedades WHERE id=$id ORDER BY orden ASC";
-                    $result = $conn->query($sql);
-                    $i = 0;
-                    if ($result->num_rows > 0) {
-                        // output data of each row
-                        while($row = $result->fetch_assoc()) {
-                          $i = $i + 1;
+                    $row = zeta_obra($conn);
+                    $anterior = null;
+                    $siguiente = null;
+                    if ($row) {
+                        list($anterior, $siguiente) = zeta_vecinos($conn, $row['id']);
                   ?>
 
                   <div class="item">
@@ -133,6 +131,8 @@ require_once '../conexion/conexion.php';
                     </div>
 
                     <div class="clear"></div>
+
+                    <?php echo zeta_html_nav($anterior, $siguiente, true); ?>
 
                     <div class="contenedor-informacion">
 
@@ -281,7 +281,7 @@ require_once '../conexion/conexion.php';
 
 
                     <?php
-                      $id_propiedad = $row["id"];
+                      $id_propiedad = (int) $row["id"];
                       $sql2 = "SELECT * FROM imagenes WHERE id_propiedad=$id_propiedad ORDER BY orden ASC";
                       $result2 = $conn->query($sql2);
                       $i2 = 0;
@@ -303,10 +303,7 @@ require_once '../conexion/conexion.php';
                     </div>
 
                     <?php
-
-                				}
                 			}
-
                 		?>
 
                 </div>

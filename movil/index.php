@@ -1,5 +1,7 @@
 <?php
 require_once '../conexion/conexion.php';
+require_once '../conexion/sitio.php';
+zeta_asegurar_slug($conn);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//ES" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="es" xml:lang="es" xmlns="http://www.w3.org/1999/xhtml">
@@ -86,7 +88,7 @@ require_once '../conexion/conexion.php';
 
                   <?php
 
-                    $sql = "SELECT * FROM propiedades WHERE tipo='Terminada' ORDER BY orden ASC";
+                    $sql = "SELECT * FROM propiedades WHERE tipo='Terminada' OR tipo='Terminado' ORDER BY orden ASC";
                     $result = $conn->query($sql);
                     $i = 0;
                     if ($result->num_rows > 0) {
@@ -96,7 +98,7 @@ require_once '../conexion/conexion.php';
                   ?>
 
                   <div class="item">
-                    <a href="proyecto.php?id=<?php echo ($row["id"]);?>">
+                    <a href="<?php echo zeta_href_obra($row['slug'], $row['id'], true); ?>">
                       <div class="onimg">
                         <div class="oncaja">
                           <div class="onrectangulo"></div>
@@ -136,7 +138,7 @@ require_once '../conexion/conexion.php';
 
 
 									<div class="item">
-                    <a href="proyecto.php?id=<?php echo ($row["id"]);?>">
+                    <a href="<?php echo zeta_href_obra($row['slug'], $row['id'], true); ?>">
                       <div class="onimg">
                         <div class="oncaja">
                           <div class="onrectangulo"></div>

@@ -97,11 +97,14 @@ $fecha = $mysqldate;
 $orden = 1;
 
 include_once("conexion/conexion.php");
+include_once("../conexion/sitio.php");
+zeta_asegurar_slug($conn);
+$slug = zeta_slug_libre($conn, zeta_slug($nombre));
 
 // INSERTAR EN LA BASE DE DATOS
 
-$sql = "INSERT INTO propiedades (id, nombre, tipo, arquitecto, colaboradores, iluminacion, ubicacion, ano_proyecto, ano_construccion, superficie_construida, ing_estructural, construccion, materialidad, fotografia, descripcion, imagen, orden)
-VALUES (NULL, '$nombre', '$tipo', '$arquitecto', '$colaboradores', '$iluminacion', '$ubicacion', '$ano_proyecto', '$ano_construccion', '$superficie_construida', '$ing_estructural', '$construccion', '$materialidad', '$fotografia', '$descripcion', '$imagen', $orden)";
+$sql = "INSERT INTO propiedades (id, nombre, slug, tipo, arquitecto, colaboradores, iluminacion, ubicacion, ano_proyecto, ano_construccion, superficie_construida, ing_estructural, construccion, materialidad, fotografia, descripcion, imagen, orden)
+VALUES (NULL, '$nombre', '$slug', '$tipo', '$arquitecto', '$colaboradores', '$iluminacion', '$ubicacion', '$ano_proyecto', '$ano_construccion', '$superficie_construida', '$ing_estructural', '$construccion', '$materialidad', '$fotografia', '$descripcion', '$imagen', $orden)";
 mysqli_set_charset($conn,"utf8");
 if ($conn->query($sql) === TRUE) {
     $mensaje = "La propiedades se agregó correctamente";

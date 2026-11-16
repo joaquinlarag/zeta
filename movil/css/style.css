@@ -2085,6 +2085,22 @@ transition:all 0.2s ease-in-out;
 
 
 
+.nav-obras{
+	float: left;
+	display: block;
+	width: 90%;
+	margin: 8px 0 0 5%;
+}
+.nav-obras a{
+	display: block;
+	font-family: 'Roboto', sans-serif;
+	font-size: 14px;
+	line-height: 20px;
+	color: #666767;
+	text-decoration: none;
+	padding: 4px 0;
+}
+
 @media screen and (max-width: 420px){
 .footer-der-1{
 	width:100%;
