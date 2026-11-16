@@ -1,14 +1,5 @@
 <?php
 require_once __DIR__ . '/conexion/sitio.php';
-$destinoMovil = '/movil/proyecto.php';
-if (!empty($_GET['slug']) && preg_match('/^[a-z0-9-]+$/', $_GET['slug'])) {
-    $destinoMovil .= '?slug=' . rawurlencode($_GET['slug']);
-} elseif (isset($_GET['id']) && ctype_digit((string) $_GET['id'])) {
-    $destinoMovil .= '?id=' . $_GET['id'];
-}
-zeta_redirigir_movil($destinoMovil);
-
-
 require_once 'conexion/conexion.php';
 $row = zeta_obra($conn);
 if ($row && isset($_GET['id']) && !isset($_GET['slug']) && $row['slug'] !== '') {
@@ -33,6 +24,7 @@ if ($row) {
 <head>
 <base href="<?php echo htmlspecialchars(zeta_base() === '' ? '/' : zeta_base() . '/', ENT_QUOTES, 'UTF-8'); ?>">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 <title>Zeta Arquitectos</title>
 

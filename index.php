@@ -1,8 +1,5 @@
 <?php
 require_once __DIR__ . '/conexion/sitio.php';
-zeta_redirigir_movil('/movil/');
-
-
 require_once 'conexion/conexion.php';
 zeta_asegurar_slug($conn);
 ?>
@@ -10,6 +7,7 @@ zeta_asegurar_slug($conn);
 <html lang="es" xml:lang="es" xmlns="https://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 <title>Zeta Arquitectos</title>
 

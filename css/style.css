@@ -3961,3 +3961,155 @@ input[type=submit]
 .nav-obras a:hover{
 	color: #b68d64;
 }
+
+@media (max-width: 1279px) {
+	#contenedor {
+		min-width: 0;
+	}
+}
+
+@media (hover: none) {
+	.item a .onimg {
+		opacity: 1;
+		background: linear-gradient(to left, rgba(0,0,0,.42), rgba(0,0,0,0) 70%);
+	}
+}
+
+@media (max-width: 900px) {
+	#contenedor {
+		position: relative;
+		height: auto;
+		min-height: 0;
+		overflow: visible;
+	}
+
+	.contenedor-izquierda,
+	.contenedor-derecha,
+	.derecha-izquierda,
+	.derecha-imagenes,
+	.derecha-informacion {
+		float: none;
+		width: 100%;
+		height: auto;
+		overflow: visible;
+	}
+
+	.contenedor-izquierda {
+		padding: 8px 0 12px;
+	}
+
+	.logo-zeta {
+		width: 150px;
+		margin: 18px auto 0;
+	}
+
+	#botonera_menu {
+		width: 100%;
+		margin: 18px 0 0;
+		text-align: center;
+	}
+
+	#botonera_menu ul {
+		display: flex;
+		justify-content: center;
+		flex-wrap: wrap;
+		gap: 4px 22px;
+	}
+
+	#botonera_menu ul li,
+	#botonera_menu ul li a {
+		float: none;
+		width: auto;
+		height: auto;
+	}
+
+	.social,
+	#texto_footer,
+	.iso {
+		width: auto;
+		margin: 16px auto 0;
+		text-align: center;
+	}
+
+	.social-icono-f,
+	.social-icono-i {
+		float: none;
+		display: inline-block;
+		vertical-align: middle;
+	}
+
+	#texto_footer ul li {
+		float: none;
+		width: auto;
+		height: auto;
+		text-align: center;
+	}
+
+	.iso {
+		margin-top: 14px;
+	}
+
+	.iso-icono,
+	.iso-texto {
+		float: none;
+		display: inline-block;
+		vertical-align: middle;
+	}
+
+	.nu {
+		position: static;
+		display: inline-block;
+		width: auto;
+		margin: 16px auto 8px;
+		left: auto;
+		bottom: auto;
+	}
+
+	.container {
+		overflow: visible;
+	}
+
+	.item a .onimg {
+		opacity: 1;
+		background: linear-gradient(to left, rgba(0,0,0,.42), rgba(0,0,0,0) 70%);
+	}
+
+	.derecha-imagenes img,
+	.item img,
+	.equipo-item img {
+		float: none;
+		display: block;
+		max-width: 100%;
+		height: auto;
+	}
+
+	.titulo-proyecto,
+	.titulo-texto,
+	.contenedor-informacion,
+	.nav-obras,
+	.info-1,
+	.info-2,
+	.info-nosotros {
+		width: auto;
+		height: auto;
+		max-width: calc(100% - 32px);
+	}
+
+	.titulo-proyecto,
+	.contenedor-informacion,
+	.nav-obras {
+		margin-left: 16px;
+		margin-right: 16px;
+	}
+
+	.info-nosotros {
+		line-height: 18px;
+	}
+}
+
+@media (max-width: 640px) {
+	.item,
+	.equipo-item {
+		width: 98%;
+	}
+}
