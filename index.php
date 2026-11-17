@@ -18,7 +18,6 @@ zeta_asegurar_slug($conn);
 <link rel="apple-touch-icon" sizes="180x180" href="ico/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="ico/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="ico/favicon-16x16.png">
-<link rel="manifest" href="ico/site.webmanifest">
 <link rel="mask-icon" href="ico/safari-pinned-tab.svg" color="#5bbad5">
 <meta name="msapplication-TileColor" content="#da532c">
 <meta name="theme-color" content="#ffffff">
@@ -43,8 +42,9 @@ zeta_asegurar_slug($conn);
 
 <!--:::::::::::::META::::::::::::-->
 
-<link rel="stylesheet" type="text/css" href="css/style.css" />
+<link rel="stylesheet" type="text/css" href="css/style.css?v=5" />
 <link rel="stylesheet" type="text/css" href="css/reset.css" />
+<?php include __DIR__ . '/conexion/fuente.php'; ?>
 
 
 <!--:::::::::::::CARRUSEL:::::::::::-->
@@ -72,94 +72,23 @@ zeta_asegurar_slug($conn);
 			<div class="contenedor-derecha fading">
 
 
-				<div class="container">
-
-          <?php
-
-            $sql = "SELECT * FROM propiedades WHERE tipo='Terminada' OR tipo='Terminado' ORDER BY orden ASC";
-            $result = $conn->query($sql);
-            $i = 0;
-            if ($result->num_rows > 0) {
-                // output data of each row
-                while($row = $result->fetch_assoc()) {
-                  $i = $i + 1;
-          ?>
-
-				  <div class="item">
-						<a href="<?php echo zeta_href_obra($row['slug'], $row['id']); ?>">
-							<div class="onimg">
-								<div class="oncaja">
-									<div class="onrectangulo"></div>
-									<div class="oniso"><img src="imagenes/iso-img.svg" alt=""></div>
-                  <?php if($row["tipo"]=="proceso"){ ?>
-
-                      <div class="ontitulo"><?php echo $row["nombre"];?><span> (en obra)</span></div>
-
-                  <?php }else{ ?>
-
-                      <div class="ontitulo"><?php echo ($row["nombre"]);?></div>
-
-                  <?php } ?>
-								</div>
-							</div>
-							<img src="uploads/<?php echo ($row["imagen"]);?>" width="100%" alt="">
-						</a>
-					</div>
-
-          <?php
-
-              }
-            }
-
-          ?>
-
-          <?php
-
-            $sql = "SELECT * FROM propiedades WHERE tipo='proceso' ORDER BY orden ASC";
-            $result = $conn->query($sql);
-            $i = 0;
-            if ($result->num_rows > 0) {
-                // output data of each row
-                while($row = $result->fetch_assoc()) {
-                  $i = $i + 1;
-          ?>
-
-				  <div class="item">
-						<a href="<?php echo zeta_href_obra($row['slug'], $row['id']); ?>">
-							<div class="onimg">
-								<div class="oncaja">
-									<div class="onrectangulo"></div>
-									<div class="oniso"><img src="imagenes/iso-img.svg" alt=""></div>
-                  <?php if($row["tipo"]=="proceso"){ ?>
-
-                      <div class="ontitulo"><?php echo $row["nombre"];?><span> (en obra)</span></div>
-
-                  <?php }else{ ?>
-
-                      <div class="ontitulo"><?php echo ($row["nombre"]);?></div>
-
-                  <?php } ?>
-								</div>
-							</div>
-							<img src="uploads/<?php echo ($row["imagen"]);?>" width="100%" alt="">
-						</a>
-					</div>
-
-          <?php
-
-              }
-            }
-
-          ?>
-
+				<?php
+					$loteObras = zeta_lote_obras();
+					$obras = zeta_listar_obras($conn, 0, $loteObras);
+				?>
+				<div class="container" data-cargar="<?php echo htmlspecialchars(zeta_base() . '/obras.php', ENT_QUOTES, 'UTF-8'); ?>" data-desde="<?php echo count($obras); ?>" data-lote="<?php echo $loteObras; ?>" data-pieza=".item" data-fin="<?php echo count($obras) < $loteObras ? '1' : '0'; ?>">
+					<?php
+						foreach ($obras as $row) {
+							echo zeta_html_item_obra($row);
+						}
+					?>
 				</div>
 
 
 			</div>
     </div> <!--Contenedor-->
 
-
-
+<script src="scripts/cargar-mas.js?v=4"></script>
 
 </body>
 </html>

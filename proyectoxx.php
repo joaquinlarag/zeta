@@ -29,8 +29,9 @@ require_once 'conexion/conexion.php';
 
 <!--:::::::::::::META::::::::::::-->
 
-<link rel="stylesheet" type="text/css" href="css/style.css" />
+<link rel="stylesheet" type="text/css" href="css/style.css?v=5" />
 <link rel="stylesheet" type="text/css" href="css/reset.css" />
+<?php include __DIR__ . '/conexion/fuente.php'; ?>
 
 
 

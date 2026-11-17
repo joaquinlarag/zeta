@@ -6,7 +6,7 @@
     </a>
   </div>
 
-  <div class="clear"></div>
+  <div class="lateral">
 
   <div id="botonera_menu">
     <ul>
@@ -16,60 +16,32 @@
     </ul>
   </div>
 
-  <div class="clear"></div>
-
-  <div class="social">
-
-    <div class="social-icono-f">
-      <a href="https://www.facebook.com/blacarq/" target="_blank">
-        <img src="imagenes/facebook.svg" alt="">
-      </a>
-    </div>
-
-    <div class="social-icono-i">
-      <a href="https://www.instagram.com/danielbuzeta_arq" target="_blank">
-        <img src="imagenes/instagram.svg" alt="">
-      </a>
-    </div>
-
+  <div class="presentacion">
+    <p class="presentacion-lugar">Estudio de Arquitectura y Construcción, Pichilemu, Chile</p>
+    <p class="presentacion-texto">Oficina dirigida por Daniel Buzeta, dedicada al desarrollo de proyectos residenciales, educacionales e inmobiliarios.</p>
   </div>
 
-  <div class="clear"></div>
+  <div class="contacto-lateral">
+    <a class="contacto-instagram" href="https://www.instagram.com/zarquitecto" target="_blank">Instagram @zarquitecto</a>
+    <a class="contacto-mail" href="mailto:daniel@zarquitectos.cl">daniel@zarquitectos.cl</a>
+    <a class="contacto-mail" href="tel:+569 8248 9716">+569 8248 9716</a>
 
-  <div id="texto_footer">
-    <ul>
-      <li>daniel@zarquitectos.cl</li>
-      <li>+569 8248 9716</li>
-      
-    </ul>
   </div>
-
-  <div class="clear"></div>
 
   <div class="iso">
-
     <div class="iso-icono">
-        <img src="imagenes/iso.svg" alt="">
+      <img src="imagenes/iso.svg" alt="">
     </div>
-
-    <div class="iso-texto">
-      2026
-    </div>
-
+    <div class="iso-texto">2026</div>
   </div>
-
-  <div class="clear"></div>
 
   <div class="nu">
     <a href="http://www.losneurona.cl/" target="_blank">
-    <div class="nu-icono">
-        <img src="imagenes/nu.svg" alt="">
-    </div>
-
-    <div class="nu-texto">
-      Web por: Los Neurona
-    </div>
+      <span class="nu-texto">Desarrollado por</span>
+      <span class="nu-icono"><img src="imagenes/nu.svg" alt=""></span>
     </a>
+  </div>
+
   </div>
 
 </div>

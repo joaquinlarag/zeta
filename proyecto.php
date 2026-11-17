@@ -35,7 +35,6 @@ if ($row) {
 <link rel="apple-touch-icon" sizes="180x180" href="ico/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="ico/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="ico/favicon-16x16.png">
-<link rel="manifest" href="ico/site.webmanifest">
 <link rel="mask-icon" href="ico/safari-pinned-tab.svg" color="#5bbad5">
 <meta name="msapplication-TileColor" content="#da532c">
 <meta name="theme-color" content="#ffffff">
@@ -60,8 +59,9 @@ if ($row) {
 
 <!--:::::::::::::META::::::::::::-->
 
-<link rel="stylesheet" type="text/css" href="css/style.css" />
+<link rel="stylesheet" type="text/css" href="css/style.css?v=5" />
 <link rel="stylesheet" type="text/css" href="css/reset.css" />
+<?php include __DIR__ . '/conexion/fuente.php'; ?>
 
 
 
@@ -126,32 +126,16 @@ if ($row) {
           if ($row) {
         ?>
 
-        <div class="derecha-imagenes">
-
-
-							<img class="margen" src="uploads/<?php echo ($row["imagen"]);?>" width="100%" alt="">
-
-              <?php
-                $id_propiedad = (int) $row["id"];
-                $sql2 = "SELECT * FROM imagenes WHERE id_propiedad=$id_propiedad ORDER BY orden ASC";
-                $result2 = $conn->query($sql2);
-                $i2 = 0;
-                if ($result2->num_rows > 0) {
-                    // output data of each row
-                    while($row2 = $result2->fetch_assoc()) {
-                      $i2 = $i2 + 1;
-              ?>
-
-              <img src="uploads/<?php echo ($row2["imagen"]);?>" width="100%" alt="">
-
-              <?php
-
-                  }
-                }
-
-              ?>
-
-
+        <?php
+          $loteFotos = zeta_lote_fotos();
+          $fotos = zeta_listar_fotos($conn, $row['id'], 0, $loteFotos);
+        ?>
+        <div class="derecha-imagenes" data-cargar="<?php echo htmlspecialchars(zeta_base() . '/fotos.php?id=' . (int) $row['id'], ENT_QUOTES, 'UTF-8'); ?>" data-desde="<?php echo count($fotos); ?>" data-lote="<?php echo $loteFotos; ?>" data-pieza="img" data-fin="<?php echo count($fotos) < $loteFotos ? '1' : '0'; ?>">
+          <?php
+            foreach ($fotos as $iFoto => $archivo) {
+              echo zeta_html_foto($archivo, $iFoto === 0);
+            }
+          ?>
         </div>
 
               <div class="derecha-informacion">
@@ -330,8 +314,7 @@ if ($row) {
 
     </div> <!--Contenedor-->
 
-
-
+<script src="scripts/cargar-mas.js?v=4"></script>
 
 </body>
 </html>

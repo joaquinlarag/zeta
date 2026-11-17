@@ -13,7 +13,6 @@
 <link rel="apple-touch-icon" sizes="180x180" href="ico/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="ico/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="ico/favicon-16x16.png">
-<link rel="manifest" href="ico/site.webmanifest">
 <link rel="mask-icon" href="ico/safari-pinned-tab.svg" color="#5bbad5">
 <meta name="msapplication-TileColor" content="#da532c">
 <meta name="theme-color" content="#ffffff">
@@ -38,8 +37,9 @@
 
 <!--:::::::::::::META::::::::::::-->
 
-<link rel="stylesheet" type="text/css" href="css/style.css" />
+<link rel="stylesheet" type="text/css" href="css/style.css?v=5" />
 <link rel="stylesheet" type="text/css" href="css/reset.css" />
+<?php include __DIR__ . '/conexion/fuente.php'; ?>
 
 
 <!--:::::::::::::CARRUSEL:::::::::::-->
@@ -66,37 +66,13 @@
 			<div class="derecha-izquierda fading">
 
 
-        <div class="derecha-imagenes" style="margin:0px 0 0 0">
-
-              <img style="margin-top:40px;" src="imagenes/nosotros/Equipo_1.jpg" width="100%" alt="">
-              <img src="imagenes/nosotros/Equipo_2.jpg" width="100%" alt="">
-              <img src="imagenes/nosotros/Equipo_3.jpg" width="100%" alt="">
-              <img src="imagenes/nosotros/Equipo_4.jpg" width="100%" alt="">
-              <img src="imagenes/nosotros/Equipo_5.jpg" width="100%" alt="">
-              <img src="imagenes/nosotros/Equipo_6.jpg" width="100%" alt="">
-              <img src="imagenes/nosotros/Equipo_7.jpg" width="100%" alt="">
-              <img src="imagenes/nosotros/Equipo_8.jpg" width="100%" alt="">
-              <img src="imagenes/nosotros/Equipo_9.jpg" width="100%" alt="">
-              <img src="imagenes/nosotros/Equipo_10.jpg" width="100%" alt="">
-              <img src="imagenes/nosotros/Equipo_11.jpg" width="100%" alt="">
-              <img src="imagenes/nosotros/Equipo_12.jpg" width="100%" alt="">
-              <img src="imagenes/nosotros/Equipo_13.jpg" width="100%" alt="">
-              <img src="imagenes/nosotros/Equipo_14.jpg" width="100%" alt="">
-              <img src="imagenes/nosotros/Equipo_15.jpg" width="100%" alt="">          
-              <img src="imagenes/nosotros/Equipo_17.jpg" width="100%" alt="">
-              <img src="imagenes/nosotros/Equipo_18.jpg" width="100%" alt="">
-              <img src="imagenes/nosotros/Equipo_19.jpg" width="100%" alt="">
-              <img src="imagenes/nosotros/Equipo_20.jpg" width="100%" alt="">
-              <img src="imagenes/nosotros/Equipo_21.jpg" width="100%" alt="">
-              <img src="imagenes/nosotros/Equipo_22.jpg" width="100%" alt="">
-              <img src="imagenes/nosotros/Equipo_23.jpg" width="100%" alt="">
-              <img src="imagenes/nosotros/Equipo_24.jpg" width="100%" alt="">
-              <img src="imagenes/nosotros/Equipo_25.jpg" width="100%" alt="">
-              <img src="imagenes/nosotros/Equipo_26.jpg" width="100%" alt="">
-              <img src="imagenes/nosotros/Equipo_27.jpg" width="100%" alt="">
-              <img src="imagenes/nosotros/Equipo_28.jpg" width="100%" alt="">
-              <img style="margin-bottom:40px;" src="imagenes/nosotros/Equipo_29.jpg" width="100%" alt="">
-
+        <?php
+          require_once __DIR__ . '/conexion/sitio.php';
+          $loteVision = zeta_lote_fotos();
+          $visionTotal = count(zeta_fotos_vision());
+        ?>
+        <div class="derecha-imagenes" style="margin:0px 0 0 0" data-cargar="<?php echo htmlspecialchars(zeta_base() . '/vision-fotos.php', ENT_QUOTES, 'UTF-8'); ?>" data-desde="<?php echo min($loteVision, $visionTotal); ?>" data-lote="<?php echo $loteVision; ?>" data-pieza="img" data-fin="<?php echo $visionTotal <= $loteVision ? '1' : '0'; ?>">
+          <?php echo zeta_html_fotos_vision(0, $loteVision); ?>
         </div>
 
               <div class="derecha-informacion">
@@ -130,8 +106,7 @@
 
     </div> <!--Contenedor-->
 
-
-
+<script src="scripts/cargar-mas.js?v=5"></script>
 
 </body>
 </html>
