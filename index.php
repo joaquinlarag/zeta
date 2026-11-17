@@ -1,7 +1,9 @@
 <?php
 require_once __DIR__ . '/conexion/sitio.php';
+zeta_canonizar('');
 require_once 'conexion/conexion.php';
 zeta_asegurar_slug($conn);
+$zeta_es_portada = true;
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//ES" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="es" xml:lang="es" xmlns="https://www.w3.org/1999/xhtml">
@@ -42,7 +44,7 @@ zeta_asegurar_slug($conn);
 
 <!--:::::::::::::META::::::::::::-->
 
-<link rel="stylesheet" type="text/css" href="css/style.css?v=5" />
+<link rel="stylesheet" type="text/css" href="css/style.css?v=8" />
 <link rel="stylesheet" type="text/css" href="css/reset.css" />
 <?php include __DIR__ . '/conexion/fuente.php'; ?>
 

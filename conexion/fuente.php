@@ -9,3 +9,6 @@
 	:root { --fuente: "Inter", Helvetica, Arial, sans-serif; }
 	html { font-family: var(--fuente); }
 </style>
+<link rel="stylesheet" href="css/lenis.css">
+<script src="scripts/lenis.min.js" defer></script>
+<script src="scripts/suave.js?v=1" defer></script>

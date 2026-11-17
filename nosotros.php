@@ -37,7 +37,7 @@
 
 <!--:::::::::::::META::::::::::::-->
 
-<link rel="stylesheet" type="text/css" href="css/style.css?v=5" />
+<link rel="stylesheet" type="text/css" href="css/style.css?v=6" />
 <link rel="stylesheet" type="text/css" href="css/reset.css" />
 <?php include __DIR__ . '/conexion/fuente.php'; ?>
 
@@ -104,6 +104,7 @@
 
 
 
+                  <h1 class="encabezado-seo">Nosotros</h1>
                   <div class="titulo-proyecto">
                     <img src="imagenes/titulo-proyecto.svg" alt="">
                     <div class="titulo-texto">NOSOTROS</div>

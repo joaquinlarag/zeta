@@ -75,7 +75,7 @@ require_once '../conexion/conexion.php';
             </div>
 
             <aside class="proyecto-cont">
-        		    <a href="index.php"><div class="logo-pe"><img src="../imagenes/logo-zeta.svg" heigth="80px" /></div></a>
+        		    <a href="index.php"><div class="logo-pe"><img src="../imagenes/logo-zeta.svg" alt="Zeta Arquitectos — Inicio" /></div></a>
             </aside>
 
           </div>

@@ -70,7 +70,7 @@
             </div>
 
             <aside class="proyecto-cont">
-        		    <a href="index.php"><div class="logo-pe"><img src="../imagenes/logo-zeta.svg" heigth="80px" /></div></a>
+        		    <a href="index.php"><div class="logo-pe"><img src="../imagenes/logo-zeta.svg" alt="Zeta Arquitectos — Inicio" /></div></a>
             </aside>
 
           </div>
@@ -88,6 +88,7 @@
 
 
 
+                      <h1 class="encabezado-seo">Equipo de Zeta Arquitectos</h1>
                       <div class="titulo-proyecto">
                         <img src="../imagenes/titulo-proyecto.svg" alt="">
                         <div class="titulo-texto">EQUIPO</div>
@@ -116,7 +117,7 @@
                       <div class="equipo-nombre">
                         Daniel Buzeta
                       </div>
-                      <img src="../imagenes/equipo-01.png" width="100%" alt="">
+                      <img src="../imagenes/equipo-01.png" width="100%" alt="Daniel Buzeta">
                       <div class="equipo-titulo">
                         Arquitecto
                       </div>
@@ -131,7 +132,7 @@
                       <div class="equipo-nombre">
                         NICOLE BARKOS
                       </div>
-                      <img src="../imagenes/equipo-02.png" width="100%" alt="">
+                      <img src="../imagenes/equipo-02.png" width="100%" alt="Nicole Barkos">
                       <div class="equipo-titulo">
                         Arquitecta
                       </div>
@@ -144,7 +145,7 @@
                       <div class="equipo-nombre">
                         NATALIA MOYANO
                       </div>
-                      <img src="../imagenes/equipo-03.png" width="100%" alt="">
+                      <img src="../imagenes/equipo-03.png" width="100%" alt="Natalia Moyano">
                       <div class="equipo-titulo">
                         Ingeniera Agrónoma
                       </div>

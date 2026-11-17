@@ -24,4 +24,6 @@ RewriteCond %{HTTP_HOST} ^danielbuzeta\.cl$ [OR]
 RewriteCond %{HTTP_HOST} ^www\.danielbuzeta\.cl$
 RewriteRule ^/?$ "http\:\/\/www\.zetaarquitectos\.cl" [R=301,L]
 
+RewriteRule ^equipo/?$ equipo.php [L]
+RewriteRule ^vision/?$ vision.php [L]
 RewriteRule ^proyectos/([a-z0-9-]+)/?$ proyecto.php?slug=$1 [L,QSA]

@@ -1,6 +1,11 @@
+<?php
+require_once __DIR__ . '/conexion/sitio.php';
+zeta_canonizar('vision');
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<base href="<?php echo htmlspecialchars(zeta_base() === '' ? '/' : zeta_base() . '/', ENT_QUOTES, 'UTF-8'); ?>">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -37,7 +42,7 @@
 
 <!--:::::::::::::META::::::::::::-->
 
-<link rel="stylesheet" type="text/css" href="css/style.css?v=5" />
+<link rel="stylesheet" type="text/css" href="css/style.css?v=6" />
 <link rel="stylesheet" type="text/css" href="css/reset.css" />
 <?php include __DIR__ . '/conexion/fuente.php'; ?>
 
@@ -79,6 +84,7 @@
 
 
 
+                  <h1 class="encabezado-seo">Nuestra visión de la arquitectura</h1>
                   <div class="titulo-proyecto">
                     <img src="imagenes/titulo-proyecto.svg" alt="">
                     <div class="titulo-texto">NUESTRA VISIÓN</div>

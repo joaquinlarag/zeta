@@ -140,6 +140,30 @@ function zeta_vecinos($conn, $idActual) {
     return array($anterior, $siguiente);
 }
 
+function zeta_href($pagina = '') {
+    $base = zeta_base();
+    $raiz = ($base === '' ? '' : $base);
+    if ($pagina === '') {
+        return $raiz === '' ? '/' : $raiz . '/';
+    }
+    return $raiz . '/' . $pagina . '/';
+}
+
+function zeta_canonizar($pagina = '') {
+    if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] !== 'GET') {
+        return;
+    }
+    $ruta = parse_url(isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '/', PHP_URL_PATH);
+    if ($ruta === null || $ruta === false) {
+        return;
+    }
+    $destino = zeta_href($pagina);
+    if ($ruta !== $destino) {
+        header('Location: ' . $destino, true, 301);
+        exit;
+    }
+}
+
 function zeta_href_obra($slug, $id, $enMovil = false) {
     if ($slug !== null && $slug !== '') {
         $ruta = 'proyectos/' . $slug . '/';
@@ -159,7 +183,7 @@ function zeta_lote_fotos() {
 function zeta_listar_obras($conn, $desde, $cantidad) {
     $desde = max(0, (int) $desde);
     $cantidad = max(1, min(24, (int) $cantidad));
-    $sql = "SELECT id, nombre, slug, tipo, imagen FROM propiedades
+    $sql = "SELECT id, nombre, slug, tipo, imagen, ano_proyecto, ubicacion FROM propiedades
             WHERE tipo IN ('Terminada', 'Terminado', 'proceso')
             ORDER BY CASE WHEN tipo IN ('Terminada', 'Terminado') THEN 0 ELSE 1 END, orden ASC, id ASC
             LIMIT $cantidad OFFSET $desde";
@@ -173,20 +197,46 @@ function zeta_listar_obras($conn, $desde, $cantidad) {
     return $filas;
 }
 
-function zeta_html_item_obra($row) {
-    $nombre = htmlspecialchars((string) $row['nombre'], ENT_QUOTES, 'UTF-8');
-    $titulo = $nombre;
+function zeta_html_encabezado_obra($row) {
+    $html = '<h2 class="ontitulo">' . htmlspecialchars((string) $row['nombre'], ENT_QUOTES, 'UTF-8');
     if (isset($row['tipo']) && $row['tipo'] === 'proceso') {
-        $titulo .= '<span> (en obra)</span>';
+        $html .= '<span> (en obra)</span>';
     }
-    $href = htmlspecialchars(zeta_href_obra(isset($row['slug']) ? $row['slug'] : '', $row['id']), ENT_QUOTES, 'UTF-8');
+    $html .= '</h2>';
+    if (isset($row['ubicacion']) && trim((string) $row['ubicacion']) !== '') {
+        $html .= '<p class="onubicacion">' . htmlspecialchars(trim((string) $row['ubicacion']), ENT_QUOTES, 'UTF-8') . '</p>';
+    }
+    if (isset($row['ano_proyecto']) && trim((string) $row['ano_proyecto']) !== '') {
+        $html .= '<p class="onano">' . htmlspecialchars(trim((string) $row['ano_proyecto']), ENT_QUOTES, 'UTF-8') . '</p>';
+    }
+    return $html;
+}
+
+function zeta_alt_proyecto($nombre, $ubicacion = '', $incluirUbicacion = true) {
+    $alt = trim((string) $nombre);
+    if ($incluirUbicacion && trim((string) $ubicacion) !== '') {
+        $alt .= ', ' . trim((string) $ubicacion);
+    }
+    return $alt;
+}
+
+function zeta_html_dato($etiqueta, $valor) {
+    if ($valor === null || (string) $valor === '') {
+        return '';
+    }
+    return '<dt class="info-1">' . htmlspecialchars($etiqueta, ENT_QUOTES, 'UTF-8') . '</dt>'
+        . '<dd class="info-2">' . htmlspecialchars((string) $valor, ENT_QUOTES, 'UTF-8') . '</dd>';
+}
+
+function zeta_html_item_obra($row, $enMovil = false) {
+    $prefijo = $enMovil ? '../' : '';
+    $href = htmlspecialchars(zeta_href_obra(isset($row['slug']) ? $row['slug'] : '', $row['id'], $enMovil), ENT_QUOTES, 'UTF-8');
     $img = htmlspecialchars((string) $row['imagen'], ENT_QUOTES, 'UTF-8');
+    $alt = htmlspecialchars(zeta_alt_proyecto(isset($row['nombre']) ? $row['nombre'] : '', isset($row['ubicacion']) ? $row['ubicacion'] : ''), ENT_QUOTES, 'UTF-8');
     return '<div class="item">'
         . '<a href="' . $href . '">'
-        . '<div class="onimg"><div class="oncaja"><div class="onrectangulo"></div>'
-        . '<div class="oniso"><img src="imagenes/iso-img.svg" alt=""></div>'
-        . '<div class="ontitulo">' . $titulo . '</div></div></div>'
-        . '<img src="uploads/' . $img . '" width="100%" alt="' . $nombre . '">'
+        . '<div class="onimg"><div class="oncaja">' . zeta_html_encabezado_obra($row) . '</div></div>'
+        . '<img src="' . $prefijo . 'uploads/' . $img . '" width="100%" alt="' . $alt . '">'
         . '</a></div>';
 }
 
@@ -252,10 +302,11 @@ function zeta_html_fotos_vision($desde, $cantidad) {
     return $html;
 }
 
-function zeta_html_foto($archivo, $esPrimera) {
+function zeta_html_foto($archivo, $esPrimera, $alt = '') {
     $src = htmlspecialchars('uploads/' . $archivo, ENT_QUOTES, 'UTF-8');
     $clase = $esPrimera ? ' class="margen"' : '';
-    return '<img' . $clase . ' src="' . $src . '" width="100%" alt="">';
+    $altAttr = htmlspecialchars((string) $alt, ENT_QUOTES, 'UTF-8');
+    return '<img' . $clase . ' src="' . $src . '" width="100%" alt="' . $altAttr . '">';
 }
 
 function zeta_html_nav($anterior, $siguiente, $enMovil = false) {

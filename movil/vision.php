@@ -71,7 +71,7 @@
             </div>
 
             <aside class="proyecto-cont">
-        		    <a href="index.php"><div class="logo-pe"><img src="../imagenes/logo-zeta.svg" heigth="80px" /></div></a>
+        		    <a href="index.php"><div class="logo-pe"><img src="../imagenes/logo-zeta.svg" alt="Zeta Arquitectos — Inicio" /></div></a>
             </aside>
 
           </div>
@@ -95,6 +95,7 @@
 
 
 
+                      <h1 class="encabezado-seo">Nuestra visión de la arquitectura</h1>
                       <div class="titulo-proyecto">
                         <img src="../imagenes/titulo-proyecto.svg" alt="">
                         <div class="titulo-texto">NUESTRA VISIÓN</div>

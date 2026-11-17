@@ -92,7 +92,7 @@ require_once '../conexion/sitio.php';
             </div>
 
             <aside class="proyecto-cont">
-        		    <a href="index.php"><div class="logo-pe"><img src="../imagenes/logo-zeta.svg" heigth="80px" /></div></a>
+        		    <a href="index.php"><div class="logo-pe"><img src="../imagenes/logo-zeta.svg" alt="Zeta Arquitectos — Inicio" /></div></a>
             </aside>
 
           </div>
@@ -114,7 +114,7 @@ require_once '../conexion/sitio.php';
 
                   <div class="item">
                     <a>
-                      <img src="../uploads/<?php echo ($row["imagen"]);?>" width="100%" alt="">
+                      <img src="../uploads/<?php echo ($row["imagen"]);?>" width="100%" alt="<?php echo htmlspecialchars(zeta_alt_proyecto($row['nombre'], $row['ubicacion']), ENT_QUOTES, 'UTF-8'); ?>">
                     </a>
                   </div>
 
@@ -126,7 +126,7 @@ require_once '../conexion/sitio.php';
 
                     <div class="titulo-proyecto">
                       <img src="../imagenes/titulo-proyecto.svg" alt="">
-                      <div class="titulo-texto"><?php echo ($row["nombre"]);?></div>
+                      <h1 class="titulo-texto"><?php echo htmlspecialchars($row["nombre"], ENT_QUOTES, 'UTF-8'); ?></h1>
                     </div>
 
                     <div class="clear"></div>
@@ -135,132 +135,25 @@ require_once '../conexion/sitio.php';
 
                     <div class="contenedor-informacion">
 
-                      <?php if($row["arquitecto"] != ""){ ?>
-
-                        <div class="info-1">
-                          Arquitectos
-                        </div>
-                        <div class="info-2">
-                          <?php echo ($row["arquitecto"]);?>
-                        </div>
-
-                      <?php } ?>
-
-                      <?php if($row["colaboradores"] != ""){ ?>
-
-                        <div class="info-1">
-                          Colaboradores
-                        </div>
-                        <div class="info-2">
-                          <?php echo ($row["colaboradores"]);?>
-                        </div>
-
-                      <?php } ?>
-
-                      <?php if($row["iluminacion"] != ""){ ?>
-
-                        <div class="info-1">
-                          Iluminación
-                        </div>
-                        <div class="info-2">
-                          <?php echo ($row["iluminacion"]);?>
-                        </div>
-
-                      <?php } ?>
-
-                      <?php if($row["ubicacion"] != ""){ ?>
-
-                      <div class="info-1">
-                        Ubicación:
-                      </div>
-                      <div class="info-2">
-                        <?php echo ($row["ubicacion"]);?>
-                      </div>
-
-                      <?php } ?>
-
-                      <?php if($row["ano_proyecto"] != ""){ ?>
-
-                      <div class="info-1">
-                        Año proyecto:
-                      </div>
-                      <div class="info-2">
-                        <?php echo ($row["ano_proyecto"]);?>
-                      </div>
-
-                      <?php } ?>
-
-                      <?php if($row["ano_construccion"] != ""){ ?>
-
-                      <div class="info-1">
-                        Año construcción:
-                      </div>
-                      <div class="info-2">
-                        <?php echo ($row["ano_construccion"]);?>
-                      </div>
-
-                      <?php } ?>
-
-                      <?php if($row["superficie_construida"] != ""){ ?>
-
-                      <div class="info-1">
-                        Superficie construida:
-                      </div>
-                      <div class="info-2">
-                          <?php echo ($row["superficie_construida"]);?>
-                      </div>
-
-                      <?php } ?>
-
-                      <?php if($row["ing_estructural"] != ""){ ?>
-
-                      <div class="info-1">
-                        Ing Estructural:
-                      </div>
-                      <div class="info-2">
-                        <?php echo ($row["ing_estructural"]);?>
-                      </div>
-
-                      <?php } ?>
-
-                      <?php if($row["construccion"] != ""){ ?>
-
-                      <div class="info-1">
-                        Construcción:
-                      </div>
-                      <div class="info-2">
-                        <?php echo ($row["construccion"]);?>
-                      </div>
-
-                      <?php } ?>
-
-                      <?php if($row["materialidad"] != ""){ ?>
-
-                      <div class="info-1">
-                        Materialidad:
-                      </div>
-                      <div class="info-2">
-                        <?php echo ($row["materialidad"]);?>
-                      </div>
-
-                      <?php } ?>
-
-                      <?php if($row["fotografia"] != ""){ ?>
-
-                      <div class="info-1">
-                        Fotografía:
-                      </div>
-                      <div class="info-2">
-                        <?php echo ($row["fotografia"]);?>
-                      </div>
-
-                      <?php } ?>
+                      <dl class="ficha-datos">
+                      <?php
+                        echo zeta_html_dato('Arquitectos', $row['arquitecto']);
+                        echo zeta_html_dato('Colaboradores', $row['colaboradores']);
+                        echo zeta_html_dato('Iluminación', $row['iluminacion']);
+                        echo zeta_html_dato('Ubicación:', $row['ubicacion']);
+                        echo zeta_html_dato('Año proyecto:', $row['ano_proyecto']);
+                        echo zeta_html_dato('Año construcción:', $row['ano_construccion']);
+                        echo zeta_html_dato('Superficie construida:', $row['superficie_construida']);
+                        echo zeta_html_dato('Ing Estructural:', $row['ing_estructural']);
+                        echo zeta_html_dato('Construcción:', $row['construccion']);
+                        echo zeta_html_dato('Materialidad:', $row['materialidad']);
+                        echo zeta_html_dato('Fotografía:', $row['fotografia']);
+                      ?>
+                      </dl>
 
 											<?php if($row["descripcion"] != ""){ ?>
 
-	                    <div class="info-1">
-	                      Descripción:
-	                    </div>
+	                    <h2 class="info-1">Descripción:</h2>
 	                    <div class="altook">
 
 	                      <div class="b-description_readmore js-description_readmore">
@@ -290,7 +183,7 @@ require_once '../conexion/sitio.php';
                             $i2 = $i2 + 1;
                     ?>
 
-                    <img src="../uploads/<?php echo ($row2["imagen"]);?>" width="100%" alt="">
+                    <img src="../uploads/<?php echo ($row2["imagen"]);?>" width="100%" alt="<?php echo htmlspecialchars($row["nombre"], ENT_QUOTES, "UTF-8"); ?>">
 
                     <?php
 
